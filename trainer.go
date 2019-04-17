@@ -63,6 +63,10 @@ func (net *Network) Train(maxgen int, reset bool)  {
 
 
   }
+  
+  SortPopulation()
+  net.inputWeights = Population[0].inputWeights
+  net.hiddenWeights = Population[0].hiddenWeights
 
 
 }
@@ -93,7 +97,7 @@ func CalcFitness (populationindex int, net *Network) {
 
   right := 0
 
-  
+
   results := net.Predict([]float64{ 0 , 0 })
 
       Population[populationindex].Fitness += results.At(0,0)
